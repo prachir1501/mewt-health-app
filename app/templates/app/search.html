@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<br class="mt-0 mb-4">
+<div class="container">
+    <h4>Search using patient ID</h4>
+    <br>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    <div class="col form-group">
+                     <label for="idInput">Patient ID: </label>
+                     <textarea class="form-control" id="idInput" name="idInput" rows="1"></textarea>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="mt-4 mb-4 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </form>
+   
+    {{ form.media }}
+</div>
+<script>
+      document.getElementById("id_appointment_date").type = "datetime-local"
+</script>
+{% endblock %}

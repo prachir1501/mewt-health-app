@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<br class="mt-0 mb-4">
+<div class="container">
+    <h4>New Patient</h4>
+    <br>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    <div class="col">
+                        {{ form.name|as_crispy_field }}
+                        {{ form.age|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col">
+                        {{ form.city|as_crispy_field }}
+                        {{ form.appointment_date|as_crispy_field }}
+                    </div> 
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    {{ form.appointment_details|as_crispy_field }}
+                </div>
+            </div>
+            <br>
+            <div class="mt-4 mb-4 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success">Add a Patient</button>
+            </div>
+        </form>
+   
+    {{ form.media }}
+</div>
+<script>
+      document.getElementById("id_appointment_date").type = "datetime-local"
+</script>
+{% endblock %}
